@@ -14,6 +14,7 @@ const parameter = require("koa-parameter");
 const homeRouter = require("./routers/home/index.js");
 const loginRouter = require("./routers/login/index.js");
 // const redisMiddleware = require("./middlewares/redisMiddlewares.js");
+const jwtMiddlewares = require('./middlewares/jwtMiddlewares');
 const request = require("./middlewares/request.js");
 const app = new Koa();
 //处理跨域问题中间件
@@ -29,6 +30,8 @@ app.use(
 app.use(parameter(app));
 // 使用日志中间件
 app.use(logger());
+//使用JWT中间件
+app.use(jwtMiddlewares("iloveqy"));
 // 引入redis中间件,缓存数据
 // app.use(
 //   redisMiddleware({

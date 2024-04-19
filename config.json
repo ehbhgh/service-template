@@ -3,10 +3,10 @@
     "url": "http://20.46.99.207:23021",
     "testUrl": "http://192.168.88.212:23106",
     "sqlConfig": {
-        "host": "192.168.88.95",
-        "port": "23403",
+        "host": "localhost",
+        "port": "3306",
         "user": "root",
-        "password": "root",
+        "password": "123456",
         "database": "d5000",
         "timezone": "08:00",
         "connectionLimit": 100

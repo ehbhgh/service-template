@@ -7,7 +7,7 @@
  */
 
 const { router, routerApi } = require("../index.js");
-let jwt = require("jsonwebtoken");
+const {loginController,registController}=require("../../controller/login")
 router.post(routerApi.LOGIN + "/getPublicKey", async (ctx) => {
   let params = ctx.request.body;
   try {
@@ -23,27 +23,6 @@ router.post(routerApi.LOGIN + "/getPublicKey", async (ctx) => {
     ctx.body = err.response.data;
   }
 });
-router.post(routerApi.LOGIN + "/user", async (ctx) => {
-  try {
-    let user = {
-      username: "ws",
-      pwd: "ws030204",
-    };
-    let token = jwt.sign(
-      {
-        username: user.username,
-      },
-      "jiansu-server-jwt",
-      {
-        expiresIn: 3600 * 24 * 7,
-      }
-    );
-    ctx.body = {
-      token,
-    };
-  } catch (err) {
-    // ctx.body = err.response.data;
-  }
-});
-
+router.post(routerApi.LOGIN,loginController);
+router.post(routerApi.LOGIN+ "/regist",registController);
 module.exports = router;
